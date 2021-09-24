@@ -1,0 +1,21 @@
+.message {
+  min-width: 128px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px #007aff88;
+  display: flex;
+  flex-direction: row;
+  padding: 0.25rem;
+  margin: 0.25rem;
+  background-color: #007aff;
+}
+
+.message-own {
+  background-color: #eee;
+  box-shadow: 0 4px 8px #eee8;
+  color: #222;
+}
+
+.message .time {
+  margin: auto 0 0 auto;
+  opacity: 0.8;
+}
