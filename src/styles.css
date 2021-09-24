@@ -1,0 +1,44 @@
+body {
+  background-color: #111;
+  color: white;
+}
+
+input {
+  background-color: #222;
+  border-color: #444;
+  color: white;
+  padding: 0.5em;
+  border: none;
+  border-bottom: 0px solid #7700ff00;
+  border-radius: 0.25em;
+  transition: border-bottom 0.25s, background-color 0.25s;
+}
+
+input:focus {
+  background-color: #555;
+  outline: none;
+  border-bottom: 1px solid #7700ff;
+}
+
+.card {
+  background-color: #222;
+}
+
+.card-header {
+  background-color: #333;
+  font-size: 1.5em;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-variant-caps: all-small-caps;
+}
+
+.card-footer {
+  background-color: #333;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
