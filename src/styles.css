@@ -55,3 +55,29 @@ input:focus {
   background-color: var(--color-dark);
   border-color: var(--color-dark);
 }
+
+.clickable,
+.clickable.inactive {
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.clickable:hover,
+.clickable.inactive:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.clickable:active,
+.clickable.inactive:active {
+  opacity: 0.5;
+}
+
+.clickable.active {
+  opacity: 1;
+  cursor: default;
+}
+
+.clickable.inactive {
+  opacity: 0.6;
+}
