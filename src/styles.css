@@ -1,39 +1,47 @@
+:root {
+  --color-dark-less: #444;
+  --color-dark: #333;
+  --color-darker: #222;
+  --color-darkest: #111;
+}
+
 body {
-  background-color: #111;
+  background-color: var(--color-darkest);
   color: white;
 }
 
 input {
-  background-color: #222;
-  border-color: #444;
+  background-color: var(--color-darker);
+  border-color: var(--color-dark-less);
   color: white;
   padding: 0.5em;
   border: none;
-  border-bottom: 0px solid #7700ff00;
-  border-radius: 0.25em;
+  border-bottom: 1px solid var(--color-dark-less);
+  border-radius: 0.25em 0.25em 0 0;
   transition: border-bottom 0.25s, background-color 0.25s;
 }
 
 input:focus {
-  background-color: #555;
+  background-color: var(--color-dark-less);
   outline: none;
-  border-bottom: 1px solid #7700ff;
-}
-
-.card {
-  background-color: #222;
+  border-bottom: 1px solid var(--bs-primary);
 }
 
 .card-header {
-  background-color: #333;
+  background-color: var(--color-dark);
   font-size: 1.5em;
   font-weight: bold;
   letter-spacing: 2px;
   font-variant-caps: all-small-caps;
 }
 
+.card {
+  background-color: var(--color-darker);
+  color: white;
+}
+
 .card-footer {
-  background-color: #333;
+  background-color: var(--color-dark);
 }
 
 .container {
@@ -41,4 +49,9 @@ input:focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.btn-dark {
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
 }
