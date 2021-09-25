@@ -27,20 +27,34 @@ input:focus {
   border-bottom: 1px solid var(--bs-primary);
 }
 
-.card-header {
+.card-header,
+.modal-header {
   background-color: var(--color-dark);
   font-size: 1.5em;
   font-weight: bold;
   letter-spacing: 2px;
+}
+
+.card-header {
   font-variant-caps: all-small-caps;
 }
 
-.card {
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.card,
+.modal-body {
   background-color: var(--color-darker);
   color: white;
 }
 
-.card-footer {
+.card-footer,
+.modal-footer {
   background-color: var(--color-dark);
 }
 
