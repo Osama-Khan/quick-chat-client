@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Button, Card, Form } from "react-bootstrap";
+import { FaChevronRight, FaPlus, FaPowerOff } from "react-icons/fa";
 import socketService from "../../Services/socket.service";
 
 /** @param {{onJoinRoom: (id) => void}} props */
@@ -10,43 +12,43 @@ export default function Home(props) {
     });
   }, [props]);
   return (
-    <div className="card">
-      <div className="card-header">Home</div>
-      <div className="card-body row">
-        <input
-          type="text"
-          placeholder="Enter room id..."
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-        />
-        <button
-          className="btn btn-dark col-sm-4 col-md-2 p-2 mx-auto my-2 d-flex flex-column"
-          disabled={!id}
-          onClick={() => {
+    <Card className="card mx-auto" style={{ maxWidth: 480 }}>
+      <Card.Header>Home</Card.Header>
+      <Card.Body>
+        <Form
+          className="justify-content-between d-flex"
+          onSubmit={(e) => {
+            e.preventDefault();
             socketService.socket.emit("joinRoom", id);
           }}
         >
-          <img
-            src="/assets/images/icon-join.png"
-            alt="join-icon"
-            style={{ height: 64, width: "auto", objectFit: "contain" }}
+          <input
+            type="text"
+            placeholder="Enter room id..."
+            value={id}
+            onChange={(e) => setId(e.target.value)}
           />
-          Join room
-        </button>
-        <button
-          className="btn btn-dark col-sm-4 col-md-2 p-2 mx-auto my-2 d-flex flex-column"
+          <Button type="submit">
+            <FaChevronRight />
+          </Button>
+        </Form>
+      </Card.Body>
+      <Card.Footer className="d-flex justify-content-between">
+        <a href="/">
+          <Button variant="danger">
+            <FaPowerOff />
+          </Button>
+        </a>
+        <Button
+          variant="dark"
           onClick={() => {
             socketService.socket.emit("createRoom");
           }}
         >
-          <img
-            src="/assets/images/icon-plus.png"
-            alt="create-icon"
-            style={{ height: 64, width: "auto", objectFit: "contain" }}
-          />
+          <FaPlus className="m-1" />
           Create room
-        </button>
-      </div>
-    </div>
+        </Button>
+      </Card.Footer>
+    </Card>
   );
 }
