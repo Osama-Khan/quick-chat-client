@@ -10,18 +10,7 @@ export default function App() {
   const [user, setUser] = useState();
   useEffect(() => {
     socketService.socket.on("loginSuccess", (user) => {
-      console.log(user);
       setUser(user);
-    });
-    socketService.socket.on("loginFailed", (m) => {
-      console.error("Failed login: " + m);
-    });
-    socketService.socket.on("registerSuccess", (user) => {
-      console.log("Registered as: ");
-      console.log(user);
-    });
-    socketService.socket.on("registerFailed", (m) => {
-      console.error("Failed registration: " + m);
     });
   });
   return (
