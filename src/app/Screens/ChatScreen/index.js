@@ -2,8 +2,9 @@ import React from "react";
 import "./chat.css";
 import { formatTime } from "../../Helpers/date-time";
 import socketService from "../../Services/socket.service";
-import { Button, Card } from "react-bootstrap";
+import { Badge, Button, Card, Form } from "react-bootstrap";
 import { UserContext } from "../../Providers/user.provider";
+import { FaChevronLeft, FaPaperPlane } from "react-icons/fa";
 
 /** @param {{roomId: string; onLeave: () => void}} props */
 export default class Chat extends React.Component {
@@ -30,20 +31,18 @@ export default class Chat extends React.Component {
 
     return (
       <Card className="d-flex" style={{ height: "100vh" }}>
-        <Card.Header
-          style={{ display: "flex", justifyContent: "space-between" }}
-        >
-          <span>Room # {props.roomId}</span>
+        <Card.Header className="d-flex justify-content-between">
           <Button
-            variant="danger"
+            variant="secondary"
             className="text-lg font-weight-bold"
             onClick={() => {
               socketService.socket.emit("leaveRoom", props.roomId);
               props.onLeave();
             }}
           >
-            &times;
+            <FaChevronLeft />
           </Button>
+          <Badge className="ml-2 my-auto">{props.roomId}</Badge>
         </Card.Header>
         <Card.Body className="overflow-scroll d-flex flex-column">
           {messages.map((m, i) => {
@@ -62,6 +61,7 @@ export default class Chat extends React.Component {
                     {!isOwn && (
                       <img
                         src={m.sender.profile}
+                        alt={m.sender.name + "'s profile"}
                         width="32"
                         height="32"
                         className="my-auto rounded-circle"
@@ -77,20 +77,11 @@ export default class Chat extends React.Component {
             );
           })}
         </Card.Body>
-        <Card.Footer className="d-flex flex-direction-row p-1">
-          <input
-            type="text"
-            className="mx-1"
-            style={{ width: "auto", flexGrow: 1 }}
-            value={this.state.message}
-            onChange={(e) =>
-              this.setState({ ...this.state, message: e.target.value })
-            }
-            placeholder="Type a message..."
-          />
-          <Button
-            variant="primary"
-            onClick={() => {
+        <Card.Footer className="p-1">
+          <Form
+            className="d-flex"
+            onSubmit={(e) => {
+              e.preventDefault();
               socketService.socket.emit(
                 "sendMessage",
                 this.state.message,
@@ -106,8 +97,20 @@ export default class Chat extends React.Component {
               );
             }}
           >
-            Send
-          </Button>
+            <input
+              type="text"
+              className="mx-1"
+              style={{ width: "auto", flexGrow: 1 }}
+              value={this.state.message}
+              onChange={(e) =>
+                this.setState({ ...this.state, message: e.target.value })
+              }
+              placeholder="Type a message..."
+            />
+            <Button variant="primary" type="submit">
+              <FaPaperPlane />
+            </Button>
+          </Form>
         </Card.Footer>
       </Card>
     );
