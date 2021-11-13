@@ -65,7 +65,7 @@ export default function LoginScreen() {
       >
         <Card.Body>
           <FormGroup className="d-flex flex-direction-row align-items-center">
-            <FaUser className="m-1" />
+            <FaUser className="m-2" />
             <input
               placeholder="Username..."
               required
@@ -74,7 +74,7 @@ export default function LoginScreen() {
             />
           </FormGroup>
           <FormGroup className="d-flex flex-direction-row align-items-center">
-            <FaKey className="m-1" />
+            <FaKey className="m-2" />
             <input
               placeholder="Password..."
               required
@@ -85,7 +85,7 @@ export default function LoginScreen() {
           </FormGroup>
           {tab === 1 ? (
             <FormGroup className="d-flex flex-direction-row align-items-center">
-              <FaImage className="m-1" />
+              <FaImage className="m-2" />
               <input
                 placeholder="Profile picture link..."
                 className="my-2"
